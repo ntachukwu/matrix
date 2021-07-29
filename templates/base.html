@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- will be replaced with meta content -->
+{% block metatags %}{% endblock %} {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+html, body {
+height: 100%;
+}
+body {
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'sans-serif';
+	font-size: 18px;
+	background-color: #fdfdfd;
+display: flex;
+flex-direction: column;
+}
+.shadow {
+            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);}
+
+        .masthead {
+            background: #3398E1;
+            height: auto;
+            padding-bottom: 15px;
+            box-shadow: 0 16px 48px #E3E7EB;
+            padding-top: 10px;
+        }
+#nofooter {
+flex: 1 0 auto;
+}
+darkbtn {
+color: #669eff; }
+.dark-mode {
+	background-color: black;
+	color: white;
+}
+#foot {
+	flex-shrink: 0;
+	font-family: sans-serif;
+background-color: #669eff; color: #001849;
+	bottom: 0px;
+	width: 100%;
+}
+.card-group,.card,.card-footer,.card-body {
+border: none;
+}
+</style>
+</head>
+<body><div id="bodydiv"><div id="nofooter">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="topnav">
+	<div class="container-fluid">
+	<a class="navbar-brand" href="{% url 'home' %}">
+	<img src="{% static 'logo.png' %}"  loading="lazy">
+	The Matrix</a>
+	<div class="nav justify-content-end">
+		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}">Posts</a></div>
+		</div></div>
+</nav>
+<!-- will be replaced with post content -->
+{% block content %}
+{% endblock content %}
+</div>
+<footer class="footer" id="foot">
+<div class="container"><h5 style="text-align:center;">Enjoy your ride on the Nebuchadnezzar</h5>
+<nav class="navbar navbar-expand-lg">
+<div class="container-fluid">
+
+<p>Copyright © Dennis' Impressions</p>
+
+<div class="nav justify-content-center" id="navfooter">
+<span><a class="nav-link text-black font-weight-bold" href="#">About</a></span>
+<span><a class="nav-link text-black font-weight-bold" href="#">Privacy</a></span>
+<span><a class="nav-link text-black font-weight-bold" href="#">Terms</a></span>
+<span><a class="nav-link text-black font-weight-bold" href="#">Feed</a></span>
+</div>
+</div>
+</nav>
+	</div>
+</footer></div>
+</body>
+</html>
