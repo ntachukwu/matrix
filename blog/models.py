@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django.shortcuts import reverse
+from cloudinary.models import CloudinaryField
+
 
 User = get_user_model()
 
@@ -26,8 +28,7 @@ class Post(models.Model):
 
     metades = models.CharField(max_length=300, default="new post")
     status = models.IntegerField(choices=STATUS, default=0)
-    post_image = models.ImageField(
-        upload_to='media/', max_length=254, blank=True, null=True)
+    post_image = CloudinaryField('image')
 
     class Meta:
         ordering = ['-created_on']

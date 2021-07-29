@@ -14,6 +14,9 @@ import os
 
 # Using Django Environ
 import environ
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 env = environ.Env()
 environ.Env.read_env()
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'crispy_forms',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +144,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+cloudinary.config(
+    cloud_name=env("CLOUD_NAME"),
+    api_key=env("API_KEY"),
+    api_secret=env("API_SECRET"),
+    secure=True
+)
+
+# cloudinary.uploader.upload("media/hero.jpg")

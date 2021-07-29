@@ -6,7 +6,7 @@
         <div class="col-md-8 card mb-4  mt-3 left  top">
             <div class="card-body">
                 <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-                <img source='{{ post.post_image }}' />
+                <img src='{{ post.post_image.url }}' width="400px"/>
                 <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
                 <p class="card-text ">{{ post.content | safe }}</p>
 
