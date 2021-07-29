@@ -4,18 +4,28 @@
 <!-- will be replaced with meta content -->
 {% block metatags %}{% endblock %} {% load static %}
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />\
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <style>
 html, body {
 height: 100%;
 }
 body {
-	font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'sans-serif';
-	font-size: 18px;
-	background-color: #fdfdfd;
+	font-family: 'Denso Var','Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'sans-serif';
+	font-size: 15px;
+	background-color: #ffffff;
 display: flex;
 flex-direction: column;
+}
+.heading {
+	font-family: New York Extra Large;
+font-style: normal;
+font-weight: bold;
+font-size: 54px;
+line-height: 100%;
 }
 .shadow {
             box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);}
@@ -39,7 +49,7 @@ color: #669eff; }
 #foot {
 	flex-shrink: 0;
 	font-family: sans-serif;
-background-color: #669eff; color: #001849;
+background-color: #f4f8ff; color: #001849;
 	bottom: 0px;
 	width: 100%;
 }
@@ -51,9 +61,8 @@ border: none;
 <body><div id="bodydiv"><div id="nofooter">
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="topnav">
 	<div class="container-fluid">
-	<a class="navbar-brand" href="{% url 'home' %}">
-	<img src="{% static 'logo.png' %}"  loading="lazy">
-	The Matrix</a>
+	<a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Pacifico', cursive;">
+	Matrix</a>
 	<div class="nav justify-content-end">
 		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}">Posts</a></div>
 		</div></div>

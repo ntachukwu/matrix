@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from django.http import HttpResponse
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -28,6 +29,7 @@ def post_detail(request, slug):
             new_comment.post = post
 
             new_comment.save()
+            comment_form = CommentForm()
     else:
         comment_form = CommentForm()
 
@@ -37,3 +39,9 @@ def post_detail(request, slug):
         'new_comment': new_comment,
         'comment_form': comment_form
     })
+
+
+def like_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.likes.add(request.user)
+    return post_detail(request, slug)

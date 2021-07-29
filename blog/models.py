@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
+from django.shortcuts import reverse
 
 User = get_user_model()
 
@@ -20,7 +21,8 @@ class Post(models.Model):
     created_on = models.DateTimeField()
 
     content = models.TextField()
-    likes = models.ManyToManyField(User, related_name="post_likes")
+    likes = models.ManyToManyField(
+        User, related_name="post_likes")
 
     metades = models.CharField(max_length=300, default="new post")
     status = models.IntegerField(choices=STATUS, default=0)
@@ -33,13 +35,11 @@ class Post(models.Model):
     def total_likes(self):
         return self.likes.count()
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super(Post, self).save(*args, **kwargs)
-
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detailing', kwargs={'slug': self.slug})
 
 
 class Comment(models.Model):

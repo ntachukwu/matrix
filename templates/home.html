@@ -20,14 +20,18 @@
 
     .h1,
     h4 {
-        font-family: 'Raleway', sans-serif;
+        font-family: New York Extra Large;
+font-style: normal;
+font-weight: bold;
+font-size: 54px;
+line-height: 100%;
     }
 
     #mainhome {
         text-align: center;
     }
 </style>
-<header class="jumbotron" style="background-color: #bdc5ff; color: #00218f;">
+<header class="jumbotron" style="background-color: #dcdff9; color: #000000;">
     <div class="container">
         <p class="h1"> Welcome to <strong>The Matrix</strong></p>
 
@@ -43,9 +47,9 @@
                     <p class="card-text text-muted h6"><span>{{ post.author.first_name }}
                             {{ post.author.last_name }}</span> | {{ post.created_on}} </p>
 
-                    <p class="card-text">{{post.metades }}</p>
+                    <p class="card-text">{{post.content|truncatewords:40 }}</p>
 
-                    <span><a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-primary">Read More
+                    <span><a href="{% url 'post_detailing' slug=post.slug %}" class="btn btn-outline-primary">Read More
                             →</a></span>
                 </div>
             </div>
