@@ -1,19 +1,37 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
+<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 200px; background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom; font-family: 'Bebas Neue', cursive;">
+    <div class="container">
+        <p class="h1"> {{post.title}}</p>
+
+    </div>
+</header>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 left  top">
             <div class="card-body">
-                <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+                <br />
                 <img src='{{ post.post_image.url }}' width="400px"/>
                 <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
                 <p class="card-text ">{{ post.content | safe }}</p>
 
-                <form action="{% url 'like' post.slug %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-primary btn-sm">Like</button> 
-                </form>
+                <table><tr>
+                    <td class="pr-sm-2"><form action="{% url 'like' post.slug %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-primary btn-sm"> <span>
+                                {{post.total_likes}} </span>Like</button>
+                    </form></td>
+                    <td>
+                        <form action="{% url 'dislike' post.slug %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="post_slug" value="{{ post.slug }}" class="btn btn-danger btn-sm"> <span>
+                                    {{post.total_dislikes}} </span>Dislike</button>
+                        </form>
+                    </td>
+                </tr></table>
             </div>
         </div>
 

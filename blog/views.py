@@ -43,5 +43,25 @@ def post_detail(request, slug):
 
 def like_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    post.likes.add(request.user)
+
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        post.dislike.add(request.user)
+    else:
+        post.likes.add(request.user)
+        post.dislike.remove(request.user)
+
+    return post_detail(request, slug)
+
+
+def dis_like_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if post.dislike.filter(id=request.user.id).exists():
+        post.dislike.remove(request.user)
+        post.likes.add(request.user)
+    else:
+        post.dislike.add(request.user)
+        post.likes.remove(request.user)
+
     return post_detail(request, slug)

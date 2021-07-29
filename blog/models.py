@@ -24,7 +24,9 @@ class Post(models.Model):
 
     content = models.TextField()
     likes = models.ManyToManyField(
-        User, related_name="post_likes")
+        User, related_name="post_likes", blank=True)
+    dislike = models.ManyToManyField(
+        User, related_name="post_dis_likes", blank=True)
 
     metades = models.CharField(max_length=300, default="new post")
     status = models.IntegerField(choices=STATUS, default=0)
@@ -34,7 +36,16 @@ class Post(models.Model):
         ordering = ['-created_on']
 
     def total_likes(self):
-        return self.likes.count()
+        if self.likes == None:
+            return 0
+        else:
+            return self.likes.count()
+
+    def total_dislikes(self):
+        if self.dislike == None:
+            return 0
+        else:
+            return self.dislike.count()
 
     def __str__(self):
         return self.title
