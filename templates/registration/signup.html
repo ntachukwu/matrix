@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<style>
+    #outer
+{
+    width:50%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+</style>
+<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 200px; background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom; font-family: 'Bebas Neue', cursive;">
+    <div class="container">
+        <p class="h1"> Sign Up</p>
+
+    </div>
+</header>
+<div class="col-md-8 card mb-4  mt-3 ">
+    <div class="card-body">
+        <h6> Enter your credentials </h6>
+        <form method="post" style="margin-top: 1.3em;">
+            {% csrf_token %}
+            {{ form | crispy }}
+
+    <button type="submit" class="btn btn-primary  btn-sm">Sign Up</button> <span class="ml-sm-2"> Already have an account?
+    </span><span><a href="{% url 'login' %}">Log in</a></span>
+        </form>
+    </div>
+    <br />
+    {% endblock content %}

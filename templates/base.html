@@ -20,14 +20,14 @@ html, body {
 height: 100%;
 }
 body {
-	font-family: 'Denso Var','Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'sans-serif';
+	font-family: 'Denso Var', 'Bebas Neue', cursive, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'sans-serif';
 	font-size: 15px;
 	background-color: #ffffff;
 display: flex;
 flex-direction: column;
 }
 .heading {
-	font-family: New York Extra Large;
+	font-family: 'Bebas Neue', Extra Large;
 font-style: normal;
 font-weight: bold;
 font-size: 54px;
@@ -71,9 +71,19 @@ border: none;
 	<div class="container-fluid">
 	<a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Pacifico', cursive;">
 	Matrix</a>
+	{% if user.is_authenticated %}
 	<div class="nav justify-content-end">
-		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}">Posts</a></div>
-		</div></div>
+		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}"> {{ user.username }}</a>
+		</div>
+		<div class="d-inline">
+			<a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}"> Log out</a>
+		</div>
+
+		{% else %}
+		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'login'%}"> Log In</a>
+		</div>
+		{% endif %}
+	</div>
 </nav>
 <!-- will be replaced with post content -->
 {% block content %}
@@ -84,7 +94,7 @@ border: none;
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
 
-<p>Copyright © Dennis' Impressions</p>
+<h6>Copyright © Dennis' Impressions</h6>
 
 <div class="nav justify-content-center" id="navfooter">
 <span><a class="nav-link text-black font-weight-bold" href="#">About</a></span>

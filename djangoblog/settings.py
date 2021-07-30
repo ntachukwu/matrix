@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'crispy_forms',
+    'accounts',
     'cloudinary',
 ]
 
@@ -152,4 +153,6 @@ cloudinary.config(
     secure=True
 )
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 # cloudinary.uploader.upload("media/hero.jpg")

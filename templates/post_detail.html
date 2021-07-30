@@ -1,10 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 {% load crispy_forms_tags %}
-<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 200px; background-repeat: no-repeat;
+<style>
+    p {
+        font-family: 'Ubuntu', sans-serif;
+    }
+</style>
+<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 225px; background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom; font-family: 'Bebas Neue', cursive;">
     <div class="container">
-        <p class="h1"> {{post.title}}</p>
+        <h1> {{post.title}}</h>
 
     </div>
 </header>
@@ -65,7 +70,11 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-primary  btn-sm">Submit</button>
+                    {% else %}
+                    <p> You must be logged in to post a comment</p>
+                    {% endif %}
                 </form>
 
             </div>
