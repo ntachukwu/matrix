@@ -36,7 +36,7 @@ line-height: 100%;
         text-align: center;
     }
 </style>
-<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 200px; background-repeat: no-repeat;
+<header class="jumbotron" style=" color: #192a4d; background-image: url('https://res.cloudinary.com/th3nn3ss/image/upload/v1627581682/sri7lgmf9z0nmdwmvgej.jpg'); height: 250px; background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;">
     <div class="container">
@@ -46,7 +46,7 @@ line-height: 100%;
 </header>
 <div class="container">
     <div class="row">
-        <div class="col-md-10 mt-3 left">
+        <div class="col-md-13 mt-3 left">
             {% for post in post_list %}
             <div class="shadow-none card mb-4" id="newsfeed">
                 <div class="card-body">
@@ -55,13 +55,13 @@ line-height: 100%;
                             {{ post.author.last_name }}</span> | {{ post.created_on}} </p>
                     <table class="mb-sm-3">
                         <tr>
-                            <td class="pr-sm-5"><div class="card-img"><img src="{{post.post_image.url}}" width="200" height="115" /></div></td>
-                            <td><p class="card-text">{{post.content|truncatewords:40 }}</p></td>
+                            <td class="pr-sm-5"><div class="card-img"><img src="{{post.post_image.url}}" width="250" height="185" /></div></td>
+                            <td><p class="card-text pt-0">{{post.content|truncatewords:40 }}</p></td>
                         </tr>
                     </table>
                     
 
-                    <span><a href="{% url 'post_detailing' slug=post.slug %}" class="btn btn-outline-primary">Read More
+                    <span><a href="{% url 'post_detailing' slug=post.slug %}" class="btn btn-outline-primary btn-sm">Read More
                             →</a></span>
                 </div>
             </div>
@@ -73,11 +73,11 @@ line-height: 100%;
 <nav aria-label="Page navigation conatiner"></nav>
 <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info"
+    <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info btn-sm"
             style="font-family: sans-serif;">« PREV </a></li>
     {% endif %}
     {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info" style="font-family: sans-serif;">
+    <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info btn-sm" style="font-family: sans-serif;">
             NEXT »</a></li>
 
     {% endif %}
