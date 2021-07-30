@@ -4,6 +4,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 class PostList(generic.ListView):
@@ -41,6 +42,8 @@ def post_detail(request, slug):
     })
 
 
+@login_required
+# @permission_required('request.user.is_authenticated', raise_exception=True)
 def like_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
 
@@ -54,6 +57,8 @@ def like_post(request, slug):
     return post_detail(request, slug)
 
 
+@login_required
+# @permission_required('request.user.is_authenticated', raise_exception=True)
 def dis_like_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
 
