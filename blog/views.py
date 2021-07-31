@@ -53,6 +53,7 @@ def like_post(request, slug):
     else:
         post.likes.add(request.user)
         post.dislike.remove(request.user)
+    post.save()
 
     return post_detail(request, slug)
 
@@ -68,5 +69,6 @@ def dis_like_post(request, slug):
     else:
         post.dislike.add(request.user)
         post.likes.remove(request.user)
+    post.save()
 
     return post_detail(request, slug)
