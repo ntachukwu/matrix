@@ -73,7 +73,7 @@ border: none;
 	Matrix</a>
 	{% if user.is_authenticated %}
 	<div class="nav justify-content-end">
-		<div class="d-inline"><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}"> {{ user.username }}</a>
+		<div class="d-inline" ><a class="nav-link text-black font-weight-bold" href="{% url 'home'%}"> {{ user.username }}</a>
 		</div>
 		<div class="d-inline">
 			<a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}"> Log out</a>
